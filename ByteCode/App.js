@@ -6,69 +6,67 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View, Image, TextInput, FlatList
-} from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import Header from './src/components/Header';
+import Form from './src/components/Form'
+import TodoItem from './src/components/TodoItem';
 
 const App = () => {
 
-  return (
-    <SafeAreaView>
-      {/* <Text>ByteCoin</Text> */}
-      <View style={styles.currencyView}>
-        <View>
-          <Image source={
-            require('./src/assets/images/btc-image.png')
-            } 
-            style={{ width: 50, height: 50 }}
-          />
-        </View>
-        <View><Text>...</Text></View>
-        <View style={{ flex: 0.3 }}><Text>USD</Text></View>
-        
+  const [todos, setTodos] = useState([
+    {text: 'Go to Work', key: 1},
+    {text: 'Go to Work again', key: 2},
+    {text: 'Go to School', key: 3},
+  ]);
 
-      </View>
- 
-          {/* <View>
-            <Text>Some more text</Text>
-            <Image
-              source={{
-                uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
-              }}
-              style={{ width: 200, height: 200 }}
-            />
+  const pressHandler = (key) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter(todo => todo.key != key  )
+    })
+  }
+
+  const submitHandler = (text) => {
+    setTodos((prevTodos) => {
+      return [
+        {text: text, key: Math.random().toString() },
+        ...prevTodos
+      ];
+    })
+  }
+
+    return (
+        <View style={styles.container}>
+          <Header />
+          <View style={styles.content}>
+          <Form submitHandler={submitHandler} />
+            <View style={styles.list}>
+              <FlatList 
+              data={todos}
+              renderItem={( {item} ) => (
+                <TodoItem item={item} pressHandler={pressHandler} />
+              )}
+              />
+            </View>
           </View>
-          <TextInput
-            style={styles.textInputStyle}
-            defaultValue="You can type in me"
-          /> */}
-    </SafeAreaView>
+        </View>
+     
+    );
 
-  );
-}
+} 
 
 const styles = StyleSheet.create({
-  currencyView: {
+  container: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 20,
-    height: 100
+    backgroundColor: '#fff',
+ 
   },
-  listHeader: {
-    height: 100,
-    alignContent: 'center',
-    justifyContent: 'center'
+  content: {
+    padding: 40
   },
-  textInputStyle: {
-      height: 40,
-      borderColor: 'gray',
-      borderWidth: 1
-  },
+  list: {
+    marginTop: 20
+  }
 
 });
 
