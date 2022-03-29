@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         padding: 16,
         marginTop: 16,
         borderWidth: 1,
-        borderStyle: 'dashed',
+        borderStyle: 'dotted',
         borderRadius: 10
     }
 })

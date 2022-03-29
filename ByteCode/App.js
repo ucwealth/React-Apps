@@ -7,10 +7,11 @@
  */
 
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import Header from './src/components/Header';
 import Form from './src/components/Form'
 import TodoItem from './src/components/TodoItem';
+import Sandbox from './src/components/Sandbox';
 
 const App = () => {
 
@@ -27,15 +28,26 @@ const App = () => {
   }
 
   const submitHandler = (text) => {
-    setTodos((prevTodos) => {
-      return [
-        {text: text, key: Math.random().toString() },
-        ...prevTodos
-      ];
-    })
+    if(text.length > 3) {
+      setTodos((prevTodos) => {
+        return [
+          {text: text, key: Math.random().toString() },
+          ...prevTodos
+        ];
+      })
+    } else {
+      Alert.alert('OOPS!', 'Todos must be over 3 characters long', [
+        { text: 'Understood', onPress: () => console.log('alert closed')}
+      ])
+    }
+
   }
 
     return (
+      <TouchableWithoutFeedback onPress={() => {
+        Keyboard.dismiss()
+        console.log('dismiss keyboard')
+      }}>
         <View style={styles.container}>
           <Header />
           <View style={styles.content}>
@@ -50,7 +62,7 @@ const App = () => {
             </View>
           </View>
         </View>
-     
+        </TouchableWithoutFeedback>
     );
 
 } 
@@ -62,10 +74,12 @@ const styles = StyleSheet.create({
  
   },
   content: {
+    flex: 1,
     padding: 40
   },
   list: {
-    marginTop: 20
+    marginTop: 20,
+    flex: 1
   }
 
 });
