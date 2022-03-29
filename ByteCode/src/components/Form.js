@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, TextInput, StyleSheet, TouchableOpacity, Button } from 'react-native';
 
 export default function Form({ submitHandler }) {
+
     const [todo, setTodo] = useState('')
     const changeHandler = (val) => {
         setTodo(val) 
