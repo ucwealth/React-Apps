@@ -2,13 +2,13 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import ReviewDetails from "../screens/reviewDetails";
+import About  from '../screens/about';
 
 const Stack = createNativeStackNavigator();
 
-export default function Navigator() {
+export default function AboutStack() {
     
   return (
-    <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
@@ -18,16 +18,15 @@ export default function Navigator() {
         }}
       >
         <Stack.Screen 
-        name='ReviewDetails' 
-        component={ReviewDetails} 
+        name='About' 
+        component={About} 
         options={{
-          title: 'Reviews Page',
+        //   title: 'About Page',
           headerStyle: {
             backgroundColor: 'coral'
           }
         }} 
         />
       </Stack.Navigator>
-    </NavigationContainer>
   );
 }

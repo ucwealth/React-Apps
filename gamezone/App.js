@@ -1,11 +1,10 @@
+import 'react-native-gesture-handler';
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Navigator from './src/routes/homeStack';
+import RootDrawerNavigator from './src/routes/drawer';
 
 export default function App() {
   return (
-    <Navigator />
+    <RootDrawerNavigator />
   )
 }
-
-const styles = StyleSheet.create({})

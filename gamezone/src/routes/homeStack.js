@@ -4,13 +4,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Home from "../screens/home";
 import ReviewDetails from "../screens/reviewDetails";
 
-const Stack = createNativeStackNavigator();
+const { Navigator, Screen } = createNativeStackNavigator();
 
-export default function Navigator() {
+export default function HomeStack() {
     
   return (
-    <NavigationContainer>
-      <Stack.Navigator
+      <Navigator
         screenOptions={{
           headerStyle: {
             backgroundColor: '#999',
@@ -18,27 +17,23 @@ export default function Navigator() {
           headerTintColor: '#fff'
         }}
       >
-        <Stack.Screen 
+        <Screen 
         name='Home' 
         component={Home} 
         options={{
-          title: 'My Home Page',
+          title: 'Game Zone',
           headerStyle: {
             backgroundColor: '#999'
           }
         }}
         />
-        <Stack.Screen 
+        <Screen 
         name='ReviewDetails' 
         component={ReviewDetails} 
         options={{
           title: 'Reviews Page',
-          headerStyle: {
-            backgroundColor: 'coral'
-          }
         }} 
         />
-      </Stack.Navigator>
-    </NavigationContainer>
+      </Navigator>
   );
 }
