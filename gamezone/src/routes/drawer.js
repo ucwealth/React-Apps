@@ -10,12 +10,13 @@ const RootDrawerNavigator = () => {
   const screenOptionStyle = {
     headerShown: false, 
   }
-    return (
-          <Drawer.Navigator screenOptions={screenOptionStyle}>
-            <Drawer.Screen name="Home" component={MainStackNavigator} />
-            <Drawer.Screen name="About" component={AboutStack} />
-          </Drawer.Navigator>
-      );
+
+  return (
+        <Drawer.Navigator screenOptions={screenOptionStyle}>
+          <Drawer.Screen name="Home" component={MainStackNavigator} />
+          <Drawer.Screen name="About" component={AboutStack} />
+        </Drawer.Navigator>
+    );
 }
 
 export default RootDrawerNavigator;

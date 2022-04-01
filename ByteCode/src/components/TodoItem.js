@@ -7,7 +7,7 @@ const TodoItem = ({ item, pressHandler }) => {
     return (
         <TouchableOpacity onPress={ () => pressHandler(item.key) }>
             <View style={styles.item}>
-            <Icon name= "delete" size={30} color="#900" />
+                <Icon name= "delete" size={30} color="#900" />
                 <Text style={styles.itemText}>{item.text}</Text>
             </View>
         </TouchableOpacity>
