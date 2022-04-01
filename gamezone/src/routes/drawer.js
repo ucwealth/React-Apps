@@ -1,19 +1,20 @@
 import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
 import AboutStack from './aboutStack';
-import HomeStack from './homeStack';
+import MainStackNavigator from './mainStackNav';
 
 const Drawer = createDrawerNavigator();
 
 const RootDrawerNavigator = () => {
+
+  const screenOptionStyle = {
+    headerShown: false, 
+  }
     return (
-        <NavigationContainer>
-          <Drawer.Navigator>
-            <Drawer.Screen name="Home" component={HomeStack} />
+          <Drawer.Navigator screenOptions={screenOptionStyle}>
+            <Drawer.Screen name="Home" component={MainStackNavigator} />
             <Drawer.Screen name="About" component={AboutStack} />
           </Drawer.Navigator>
-        </NavigationContainer>
       );
 }
 

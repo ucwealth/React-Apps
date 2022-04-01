@@ -1,10 +1,13 @@
 import 'react-native-gesture-handler';
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import RootDrawerNavigator from './src/routes/drawer';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   return (
-    <RootDrawerNavigator />
+    <NavigationContainer>
+      <RootDrawerNavigator />
+    </NavigationContainer>
+
   )
 }
