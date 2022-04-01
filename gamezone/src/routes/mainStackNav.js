@@ -18,8 +18,8 @@ export default function MainStackNavigator() {
     
   return (
       <Navigator screenOptions={screenOptionStyle}>
-        <Screen name='HomeScreen' component={Home} />
-        <Screen name='ReviewDetailsScreen' component={ReviewDetails} />
+        <Screen name='Home' component={Home} />
+        <Screen name='ReviewDetails' component={ReviewDetails} options={{ title:'Review Details' }}/>
       </Navigator>
   );
 }

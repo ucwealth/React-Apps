@@ -1,4 +1,4 @@
-import { FlatList, Text, TouchableOpacity, View } from 'react-native'
+import {  FlatList, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { globalStyles } from '../styles/global'
 import Card from '../shared/card'
