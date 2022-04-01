@@ -1,8 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native'
 import React from 'react'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { NavigationContainer } from '@react-navigation/native';
-// import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function Header({ navigation, title }) {
     const openMenu = () => {
@@ -10,12 +8,13 @@ export default function Header({ navigation, title }) {
     }
 
   return (
-      <View style={styles.header}>
+      <ImageBackground source={require('../assets/images/game_bg.png')} style={styles.header}>
         <Icon name= "menu" size={30} color="#333" style={styles.icon} onPress={openMenu} />
-        <View>
+        <View style={styles.logoView}>
+            <Image source={require('../assets/images/heart_logo.png')} style={styles.headerImage} />
             <Text style={styles.headerText}>{title}</Text>
         </View>
-    </View>
+    </ImageBackground>
   )
 }
 
@@ -26,7 +25,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        // backgroundColor: 'yellow'
+        backgroundColor: 'coral'
     },
     headerText: {
         fontWeight: 'bold',
@@ -38,6 +37,15 @@ const styles = StyleSheet.create({
     icon: {
         position: 'absolute',
         left: 15,
+
+    },
+    headerImage: {
+        width: 26,
+        height: 26,
+        marginHorizontal: 10,
+    },
+    logoView: {
+        flexDirection: 'row',
 
     }
 })

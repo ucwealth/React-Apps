@@ -10,7 +10,7 @@ export default function MainStackNavigator({ navigation }) {
 
   const screenOptionStyle = {
     headerStyle: {
-      backgroundColor: "#9AC4F8",
+      // backgroundColor: "#eee",
     },
     headerTintColor: "white",
     headerBackTitle: "Back",   
