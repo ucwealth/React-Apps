@@ -11,17 +11,18 @@ export default function MainStackNavigator({ navigation }) {
   const screenOptionStyle = {
     headerStyle: {
       // backgroundColor: "#eee",
+      height: 60
     },
-    headerTintColor: "white",
+    headerTintColor: "#444",
     headerBackTitle: "Back",   
   };
     
   return (
-      <Navigator screenOptions={screenOptionStyle}>
-        <Screen name='Home' component={Home} 
+      <Navigator screenOptions={screenOptionStyle} initialRouteName=''>
+        <Screen name='HomeStack' component={Home} 
         options={{ headerTitle: () => <Header navigation={navigation} title='Gamezone' /> }}
         />
-        <Screen name='ReviewDetails' component={ReviewDetails} options={{ title:'Review Details' }}/>
+        <Screen name='ReviewDetails' component={ReviewDetails} options={{ title:'Review Details',   }}/>
       </Navigator>
   );
 }

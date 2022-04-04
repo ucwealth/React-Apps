@@ -13,7 +13,6 @@ target 'gamezone' do
   )
 
 
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   target 'gamezoneTests' do
     inherit! :complete
