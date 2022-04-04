@@ -21,6 +21,10 @@ export const globalStyles = StyleSheet.create({
         borderColor: '#ddd',
         fontSize: 18,
     },
+    errorText: {
+        color: 'red',
+        
+    }
 
 })
 

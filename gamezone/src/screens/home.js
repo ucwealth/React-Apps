@@ -1,4 +1,4 @@
-import {  FlatList, Text, TouchableOpacity, View, Modal, StyleSheet } from 'react-native'
+import {  Keyboard, FlatList, Text, TouchableOpacity, View, Modal, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import React, { useState } from 'react'
 import { globalStyles } from '../styles/global'
 import Card from '../shared/card'
@@ -15,6 +15,7 @@ export default function Home({ navigation }) {
     ])
 
   const addReview = (review) => {
+    review.key = Math.random().toString()
     setReviews((prevReviewState) => {
       return [review, ...prevReviewState]
     })
@@ -23,31 +24,33 @@ export default function Home({ navigation }) {
 
   return (
     <View style={globalStyles.container}>
-      <Modal visible={modalOpen} animationType='slide'>
-        <View style={styles.modalContent}>
-          <Icon name= "close" size={24} style={{
-            ...styles.icon, ...styles.modalClose
-          }} onPress={() => setModalOpen(false)} />
-          <ReviewForm addReview={addReview} />
+        <Modal visible={modalOpen} animationType='slide'>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.modalContent}>
+              <Icon name= "close" size={24} style={{
+                ...styles.icon, ...styles.modalClose
+              }} onPress={() => setModalOpen(false)} />
+              <ReviewForm addReview={addReview} />
+            </View>
+          </TouchableWithoutFeedback>
+        </Modal>
+
+        <View style={styles.iconView}>
+          <Icon name= "add" size={24} style={styles.icon} onPress={() => setModalOpen(true)} />
         </View>
-      </Modal>
 
-      <View style={styles.iconView}>
-        <Icon name= "add" size={24} style={styles.icon} onPress={() => setModalOpen(true)} />
-      </View>
+        <FlatList 
+        data={reviews}
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => navigation.navigate('ReviewDetails', { item }) }>
+            <Card>
+              <Text style={globalStyles.titleText}>{item.title}</Text>
+            </Card>
+          
+          </TouchableOpacity>
 
-       <FlatList 
-       data={reviews}
-       renderItem={({ item }) => (
-        <TouchableOpacity onPress={() => navigation.navigate('ReviewDetails', { item }) }>
-          <Card>
-            <Text style={globalStyles.titleText}>{item.title}</Text>
-          </Card>
-         
-        </TouchableOpacity>
-
-       )}
-       />
+        )}
+        />
     </View>
   )
 }
