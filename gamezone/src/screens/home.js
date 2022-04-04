@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { globalStyles } from '../styles/global'
 import Card from '../shared/card'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import ReviewForm from './reviewForm';
 
 export default function Home({ navigation }) {
   const [modalOpen, setModalOpen] = useState(false)
@@ -23,7 +23,7 @@ export default function Home({ navigation }) {
           <Icon name= "close" size={24} style={{
             ...styles.icon, ...styles.modalClose
           }} onPress={() => setModalOpen(false)} />
-          <Text>Modal Content</Text>
+          <ReviewForm />
         </View>
       </Modal>
 

@@ -13,7 +13,15 @@ export const globalStyles = StyleSheet.create({
     paragraph: {
         marginVertical: 10,
         lineHeight: 20,
-    }
+    },
+    input: {
+        borderWidth: 1,
+        borderRadius: 6,
+        padding: 10,
+        borderColor: '#ddd',
+        fontSize: 18,
+    },
+
 })
 
 export const images = {
