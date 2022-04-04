@@ -14,7 +14,12 @@ export default function Home({ navigation }) {
       { title: 'The Witcher', rating: 4, body: 'lorem ipsum', key: '4' },
     ])
 
-
+  const addReview = (review) => {
+    setReviews((prevReviewState) => {
+      return [review, ...prevReviewState]
+    })
+    setModalOpen(false)
+  }
 
   return (
     <View style={globalStyles.container}>
@@ -23,7 +28,7 @@ export default function Home({ navigation }) {
           <Icon name= "close" size={24} style={{
             ...styles.icon, ...styles.modalClose
           }} onPress={() => setModalOpen(false)} />
-          <ReviewForm />
+          <ReviewForm addReview={addReview} />
         </View>
       </Modal>
 

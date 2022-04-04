@@ -3,13 +3,13 @@ import React from 'react'
 import { Formik } from 'formik'
 import { globalStyles } from '../styles/global'
 
-export default function ReviewForm() {
+export default function ReviewForm({ addReview }) {
   return (
     <View style={globalStyles.container}>
       <Formik 
       initialValues={{ title: '', body: '', rating: '' }}
       onSubmit={(values) => {
-        console.log(values)
+        addReview(values)
       }}
       >
         {(props) => (
@@ -33,7 +33,9 @@ export default function ReviewForm() {
                 value={props.values.rating}
                 keyboardType='numeric'
                 />
-                <Button title='Submit' color='maroon' onPress={props.handleSubmit} />
+                <View style={styles.buttonStyle}>
+                  <Button title='Submit' color='white' onPress={props.handleSubmit} />
+                </View>
             </View>
         )}
       </Formik>
@@ -41,4 +43,10 @@ export default function ReviewForm() {
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  buttonStyle: {
+    backgroundColor: 'maroon',
+    borderRadius: 7
+  }
+
+})
