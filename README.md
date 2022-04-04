@@ -9,3 +9,5 @@ sudo gem install cocoapods-clean
 pod deintegrate
 pod clean(No longer available)
 pod install
+
+cd Desktop/PROJECTS/React-Projects/React-Apps
