@@ -11,7 +11,9 @@
             "body": "body 2",
             "author": "author 2",
             "id": 2
-        }
+        },
+        { "title": "My new website", "body": "lorem ipsum...", "author": "mario", "id": 3 },
+        { "title": "React is Super fun!", "body": "lorem ipsum...", "author": "yoshi", "id": 4 }
     ]
 }
 
