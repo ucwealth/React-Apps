@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 
  const CreatePost = () => {
      const [title, setTitle] = useState('')
      const [body, setBody] = useState('')
      const [author, setAuthor] = useState('mario')
      const [isPending, setIsPending] = useState(false)
+     const navigate = useNavigate()
 
      const handleSubmit = (e) => {
          e.preventDefault()
@@ -17,8 +19,9 @@ import { useState } from "react";
              headers: { "Content-Type": "application/json" },
              body: JSON.stringify(post)
          }).then(() => {
-             console.log('new post added')
              setIsPending(false)
+             console.log('new post added')
+             navigate('/')
          })
      }
      
