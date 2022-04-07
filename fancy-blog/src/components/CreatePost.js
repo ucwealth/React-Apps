@@ -1,4 +1,10 @@
+import { useState } from "react";
+
  const CreatePost = () => {
+     const [title, setTitle] = useState('')
+     const [body, setBody] = useState('')
+     const [author, setAuthor] = useState('mario')
+     
     return ( 
         <div className="create">
             <h1>Add New Post</h1>
@@ -7,13 +13,18 @@
                 <input 
                 type="text" 
                 required
+                value={title}
+                onChange={(e) => { 
+                    setTitle(e.target.value)
+                }}
                 />
+
                 <label>Post body: </label>
-                <textarea required>
+                <textarea required value={body} onChange={(e) => setBody(e.target.value)}>
                     
                 </textarea>
                 <label>Post author: </label>
-                <select name="" id="">
+                <select value={author} onChange={(e) => setAuthor(e.target.value)}>
                     <option value="mario">mario</option>
                     <option value="yoshi">yoshi</option>
                     <option value="wiki">wiki</option>
