@@ -4,11 +4,17 @@ import { useState } from "react";
      const [title, setTitle] = useState('')
      const [body, setBody] = useState('')
      const [author, setAuthor] = useState('mario')
+
+     const handleSubmit = (e) => {
+         e.preventDefault()
+         const post = {title, body, author}
+         console.log(post)
+     }
      
     return ( 
         <div className="create">
             <h1>Add New Post</h1>
-            <form action="" method="post">
+            <form onSubmit={handleSubmit}>
                 <label>Post title:</label>
                 <input 
                 type="text" 
