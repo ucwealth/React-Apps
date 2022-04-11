@@ -1,19 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import NewSongForm from './NewSongForm'
 
 const SongList = () => {
+   
     const [songs, setSongs ] = useState([
         {title: "Beautiful Girls", id: 1},
         {title: "Tears on my guitar", id: 2},
         {title: "Welcome to Paradise", id: 3},
     ])
-    const addSong = () => {
+    const addSong = (title) => {
         setSongs([
             ...songs,
-            {title: "A new song", id: uuidv4() }
+            {title, id: uuidv4() }
         ])
     }
-
+    useEffect(() => {
+        console.log('use effect ran', songs)
+    }, [songs])
   return (
     <div className="song-list">
         <ul>
@@ -23,7 +27,7 @@ const SongList = () => {
                 )
             }) }
         </ul>
-        <button onClick={addSong}>Add a song</button>
+        <NewSongForm addSong={addSong} />
     </div>
   )
 }
