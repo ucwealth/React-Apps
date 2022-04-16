@@ -9,6 +9,11 @@ const server = http.createServer((req, res) => {
     const num = _.random(0, 20)
     console.log(num)
 
+    // _.once() runs the function just once, no matter how many times you call it 
+    const greet = _.once(() => { console.log("Hello there")})
+    greet()
+    greet()
+
     // set header content type
     res.setHeader('Content-Type', 'text/html')
 
