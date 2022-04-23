@@ -1,6 +1,6 @@
 const http = require('http')
 const fs = require('fs')
-const port = 3000
+const port = 5000
 const _ = require('lodash')
 
 const server = http.createServer((req, res) => {
@@ -49,6 +49,35 @@ const server = http.createServer((req, res) => {
     })
 
 })
-server.listen(port, 'localhost', () => {
+
+
+const server2 = http.createServer((req, res) => {
+
+    // Listen for errors
+    req.on('error', (err) => {
+        console.log("A request error occured")
+    })
+    res.on('error', (err) => {
+        console.log("A response error occured")
+    })
+
+    // Another method
+    // res.writeHead(200, {'Content-Type': 'text/plain'})
+    // res.end('Another way to respond!')
+
+    // A method
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'application/json')
+
+    const serializedData = JSON.stringify({
+        name: "Immaculata",
+        age: 23,
+        country: "Liberia"
+    })
+    res.write(serializedData)
+    res.end()
+})
+
+server2.listen(port, 'localhost', () => {
     console.log('listening on port ' + port)
 })

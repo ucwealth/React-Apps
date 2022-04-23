@@ -1,16 +1,17 @@
 import Education from "./components/Education";
 import Footer from "./components/Footer";
 import GeneralInfo from "./components/General";
-import Navbar from "./components/Navbar";
+import Skills from "./components/Skills";
 import WorkExperience from "./components/WorkExperience";
+import './components/styles.css'
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
+    <div className="container">
       <GeneralInfo />
-      <Education />
+      <Skills />
       <WorkExperience />
+      <Education />
       <Footer />
     </div>
   );
